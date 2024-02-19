@@ -11,7 +11,8 @@ class Event(models.Model):
 
     title = models.CharField(max_length=200,validators=[MinLengthValidator(5)])
     description = models.TextField()
-    datetime = models.DateTimeField()
+    starttime = models.DateTimeField()
+    endtime = models.DateTimeField()
     location = models.CharField(max_length=100,validators=[MinLengthValidator(3)])
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
