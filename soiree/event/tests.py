@@ -48,10 +48,20 @@ class AttendeeModelTest(TestCase):
 
 # view tests
     
-# class IndexViewTest(TestCase):
-#     def test_index_view(self):
-#         response = self.client.get(reverse('index'))
+# class EventIndexViewTest(TestCase):
+#     def setUp(self):
+#         self.user = User.objects.create(username='testuser', password='12345')
+#         self.event1 = Event.objects.create(title='Test Event 1', description='Test description 1', datetime='2024-12-12 12:00', location='Test location', owner=self.user)
+
+#     def test_index_view_with_no_events(self):
+#         Event.objects.all().delete()  # Delete all events to test the case with no events
+#         response = self.client.get(reverse('event_index'))
 #         self.assertEqual(response.status_code, 200)
 #         self.assertContains(response, "No events are available.")
 #         self.assertQuerysetEqual(response.context['latest_event_list'], [])
-    
+
+#     def test_index_view_with_one_event(self):
+#         response = self.client.get(reverse('event_index'))
+#         self.assertEqual(response.status_code, 200)
+#         self.assertContains(response, "Test Event")
+#         self.assertQuerysetEqual(response.context['latest_event_list'], [repr(self.event)])
