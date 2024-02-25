@@ -24,9 +24,13 @@ class EventModelTest(TestCase):
         new_count = Event.objects.count()
         self.assertNotEqual(old_count, new_count)
 
-   # def test_model_starttime_before_endtime(self):
-    #    try:
-     #       self.new_event = Event.objects.create(title='Date time Test',)'''
+    def test_Event_starttime_before_endtime(self):
+        self.new_event = Event.objects.create(title='New Test Event', description='Test description 2', starttime='2024-12-12 12:00', endtime='2024-12-12 11:59', location='Test location', owner=self.user)
+        with self.assertRaises(ValidationError):
+            #self.new_event.save()
+            self.new_event.full_clean()
+          
+       
 
 class AttendeeModelTest(TestCase):
     def setUp(self):
